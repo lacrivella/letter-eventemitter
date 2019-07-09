@@ -12,7 +12,7 @@ describe('LetterEmitter', () => {
     letterEmitter.on('item', letter => {
       expect(letters[letter.offset]).toEqual(letter.item);
     });
-    letterEmitter.on('end', () => {
+    letterEmitter.once('end', () => {
       done();
     });
     letterEmitter.read(letters);
