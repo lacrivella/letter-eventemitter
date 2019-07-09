@@ -10,7 +10,7 @@ describe('LetterEmitter', () => {
   it('splits a string and emits an event for each letter', done => {
     const letters = 'string string string';
     letterEmitter.on('item', letter => {
-      expect(letters).toContainEqual(letter);
+      expect(letters[letter.offset]).toEqual(letter.item);
     });
     letterEmitter.on('end', () => {
       done();
