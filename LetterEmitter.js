@@ -2,8 +2,8 @@ const EventEmitter = require('events');
 
 class LetterEmitter extends EventEmitter {
   read(str) {
-    str.split('').forEach((item, index) => {
-      this.emit('letter', { item: item, offset: index });
+    str.split('').forEach((item, offset) => {
+      this.emit('letter', { item, offset });
     });
     this.emit('end');
   }

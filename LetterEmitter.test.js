@@ -7,6 +7,14 @@ describe('LetterEmitter', () => {
     done();
   });
 
+  it('emits the end evet', done => {
+    const str = 'hello';
+    letterEmitter.on('end', () => {
+      done();
+    });
+    letterEmitter.read(str);
+  });
+
   it('splits a string and emits an event for each letter', done => {
     const letters = 'string string string';
     letterEmitter.on('item', letter => {
