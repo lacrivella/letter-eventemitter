@@ -17,6 +17,19 @@ describe('LetterEmitter', () => {
     });
     letterEmitter.read(letters);
   }); 
+
+  it('returns set number of times', done => {
+    const letters = 'string';
+    const callback = jest.fn();
+    letterEmitter.on('letter', letter => {
+      callback(letter);
+    });
+    letterEmitter.once('end', () => {
+      expect(callback).toHaveBeenCalledTimes(letters.length);
+      done();
+    });
+    letterEmitter.read(letters);
+  }); 
 });
 
 // jest.fn() is used as mock behavior? use it for callbacks? make a const of call back but why?
